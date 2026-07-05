@@ -69,7 +69,7 @@ nav.wrap{display:flex;align-items:center;justify-content:space-between;}
 .hero h1 .hl{color:var(--amber);}
 .hero p.lede{margin-top:22px;max-width:42ch;color:var(--text-soft);font-size:16.5px;line-height:1.65;}
 .hero-actions{display:flex;gap:16px;margin-top:34px;flex-wrap:wrap;}
-.hero-stats{display:flex;gap:30px;margin-top:44px;}
+.hero-stats{display:flex;gap:30px;margin-top:44px;flex-wrap:wrap;}
 .hero-stats .num{font-family:'Poppins',sans-serif;font-weight:700;font-size:24px;color:var(--amber);}
 .hero-stats .lbl{font-size:11.5px;color:var(--text-soft);text-transform:uppercase;letter-spacing:0.08em;margin-top:2px;}
 
@@ -221,8 +221,10 @@ footer ul li{margin-bottom:10px;font-size:14px;color:var(--text-soft);}
 .foot-bottom{display:flex;justify-content:space-between;padding-top:24px;font-size:12.5px;color:var(--text-soft);flex-wrap:wrap;gap:10px;}
 
 @media(max-width:980px){
+  .wrap{padding:0 28px;}
   .nav-links{display:none;}
   .burger{display:flex;}
+  .hero{padding:150px 0 30px;}
   .hero-grid{grid-template-columns:1fr;}
   .hero-art{margin-top:40px;height:400px;}
   .dish-pill,.dish-pill.rev{grid-template-columns:1fr;border-radius:32px;}
@@ -238,6 +240,77 @@ footer ul li{margin-bottom:10px;font-size:14px;color:var(--text-soft);}
   .foot-top{grid-template-columns:1fr 1fr;}
   .promo{border-radius:32px;padding:30px;}
 }
+
+/* ---- SMALL PHONES ---- */
+@media(max-width:600px){
+  .wrap{padding:0 18px;}
+  header{padding:16px 0;}
+  header.scrolled{padding:12px 0;}
+  .brand{font-size:17px;gap:6px;}
+  #navReserve{display:none;}
+  .mnav.pill-btn{display:inline-flex;}
+
+  .hero{padding:120px 0 20px;}
+  .hero h1{font-size:clamp(30px,9vw,40px);}
+  .hero h1 .script{font-size:22px !important;}
+  .hero p.lede{font-size:15px;max-width:none;}
+  .hero-actions{gap:12px;}
+  .pill-btn{padding:13px 22px;font-size:13.5px;}
+  .hero-stats{gap:20px 26px;margin-top:32px;}
+  .hero-art{height:300px;}
+  .hero-main-photo{width:250px;height:250px;border-width:5px;}
+  .fp1{width:80px;height:80px;}
+  .fp2{width:68px;height:68px;}
+  .fp3{width:56px;height:56px;}
+
+  .cat-strip{padding:24px 0 60px;}
+  .cat-row{gap:14px 10px;justify-content:center;}
+  .cat-item{flex:0 0 auto;width:76px;min-width:0;}
+  .cat-circle{width:60px;height:60px;}
+  .cat-circle svg{width:24px;height:24px;}
+  .cat-label{font-size:11.5px;text-align:center;}
+
+  .promo{flex-direction:column;text-align:center;padding:30px 24px;gap:16px;}
+  .promo::before,.promo::after{display:none;}
+  .promo-pct{font-size:40px;}
+
+  .sec-head{margin-bottom:42px;}
+  .sec-head h2{font-size:clamp(26px,7vw,32px);}
+
+  .signature{padding:20px 0 70px;}
+  .dp-copy{padding:26px 24px;}
+  .dp-copy h3{font-size:21px;}
+  .dp-row{gap:16px;flex-wrap:wrap;}
+
+  .menu-tabs{gap:8px;margin-bottom:32px;}
+  .menu-tab{padding:10px 16px;font-size:12.5px;}
+  .dish-row{gap:14px;padding:14px 10px;}
+  .dish-thumb{width:60px;height:60px;}
+  .dish-info .dn{font-size:15px;}
+  .dish-info .dd{font-size:12px;max-width:none;}
+
+  .mason{grid-template-columns:1fr;grid-auto-rows:180px;gap:12px;}
+  .m1,.m2,.m3,.m4,.m5{grid-column:span 1;grid-row:span 1;}
+
+  .chef-photo{height:220px;}
+  .chef-copy{padding:28px 24px;}
+  .chef-copy h3{font-size:24px;}
+  .chef-copy p{max-width:none;}
+  .chef-pills{gap:10px;}
+  .chef-pill{padding:9px 16px;font-size:12px;}
+
+  .testi{padding:20px 0 70px;}
+  .t-card{padding:24px 20px;border-radius:24px;}
+
+  .visit{padding:20px 0 70px;}
+  .visit-card{padding:22px;border-radius:26px;gap:30px;}
+  .map-box{padding:14px;border-radius:26px;}
+
+  footer{border-radius:36px 36px 0 0;padding:50px 0 20px;}
+  .foot-top{grid-template-columns:1fr;gap:30px;}
+  footer p{max-width:none;}
+  .foot-bottom{flex-direction:column;text-align:center;gap:6px;}
+}
 </style>
 </head>
 <body>
@@ -252,7 +325,7 @@ footer ul li{margin-bottom:10px;font-size:14px;color:var(--text-soft);}
       <li><a href="#chef">Kitchen</a></li>
       <li><a href="#visit">Visit</a></li>
     </ul>
-    <a href="tel:+922200000000" class="pill-btn pill-fill">Reserve a Table</a>
+    <a href="tel:+922200000000" class="pill-btn pill-fill" id="navReserve">Reserve a Table</a>
     <div class="burger" id="burger"><span></span><span></span><span></span></div>
   </nav>
 </header>
@@ -263,6 +336,7 @@ footer ul li{margin-bottom:10px;font-size:14px;color:var(--text-soft);}
   <a href="#gallery" class="mnav" style="font-family:'Poppins';font-size:26px;color:var(--cream);">Interior</a>
   <a href="#chef" class="mnav" style="font-family:'Poppins';font-size:26px;color:var(--cream);">Kitchen</a>
   <a href="#visit" class="mnav" style="font-family:'Poppins';font-size:26px;color:var(--cream);">Visit</a>
+  <a href="tel:+922200000000" class="mnav pill-btn pill-fill" style="margin-top:10px;">Reserve a Table</a>
 </div>
 
 <section class="hero">
